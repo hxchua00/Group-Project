@@ -6,27 +6,14 @@ using System.Threading.Tasks;
 
 namespace NewGitRepo
 {
-    public static class Extensions
+    class Bill : Item
     {
-        public static T[] Append<T>(this T[] array, T item)
-        {
-            if (array == null)
-            {
-                return new T[] { item };
-            }
-            Array.Resize(ref array, array.Length + 1);
-            array[array.Length - 1] = item;
-
-            return array;
-        }
-    }
-    class Bill
-    {
-        Item[] ItemList = new Item[] { };
+        public Item[] ItemList = new Item[] { };
 
         public void addItems(Item newItem)
         {
-            Item[] shopList = ItemList.Append(newItem);
+            newItem = new Item(name,price,weight); 
+            ItemList.Append(newItem);
         }
 
         public void printAll()
@@ -37,6 +24,7 @@ namespace NewGitRepo
                 Console.WriteLine("Price of item " + i + 1 + ": " + ItemList[i].GetPrice());
                 Console.WriteLine("Weight of item " + i + 1 + ": " + ItemList[i].GetWeight());
                 Console.WriteLine();
+                Console.ReadLine();
             }
         }
         public double GetFinalBill()
