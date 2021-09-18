@@ -39,10 +39,10 @@ namespace NewGitRepo
                         Console.WriteLine();
 
                         string itemName = "";
-                        string itemPrice = "";
-                        string itemWeight = "";
+                        double itemPrice = 0;
+                        double itemWeight = 0;
 
-                        Item newItem = new Item();
+                        Item newItem = new Item(itemName,itemPrice,itemWeight);
                         Bill newBill = new Bill();
 
                         switch (newDecision)
@@ -51,13 +51,13 @@ namespace NewGitRepo
                                 Console.WriteLine("Please enter name of item: ");
                                 itemName = Console.ReadLine();
                                 Console.WriteLine("Please enter price of " + itemName + " : ");
-                                itemPrice = (Console.ReadLine()).ToString();
+                                itemPrice = double.Parse(Console.ReadLine());
                                 Console.WriteLine("Please enter weight of " + itemName + " : ");
-                                itemWeight = (Console.ReadLine()).ToString();
+                                itemWeight = double.Parse(Console.ReadLine());
                                 Console.WriteLine();
                              
                                 //ERROR STARTS HERE T-T
-                                newItem = new Item(itemName, double.Parse(itemPrice), double.Parse(itemWeight));
+                                newItem = new Item(itemName, itemPrice, itemWeight);
                                 newBill.addItems(newItem);
 
                                 Console.WriteLine("Item " + itemName + " have been added!");

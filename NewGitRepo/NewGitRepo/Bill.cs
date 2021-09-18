@@ -10,36 +10,41 @@ namespace NewGitRepo
     {
         //ERROR STARTS HERE, somewhere....
         public Item[] ItemList;
+        string[] itemArr = new string[3];
+
 
         public void addItems(Item newItem)
         {
-            newItem = new Item(name,price,weight);
-            ItemList.Append(newItem);
-        }
+            newItem = new Item(name, price, weight);
+            itemArr[0] = newItem.name;
+            itemArr[1] = (newItem.price).ToString();
+            itemArr[2] = (newItem.weight).ToString();
 
-        public void printAll()
-        {
 
-        }
-        //Until here Error! T-T
-        public double GetFinalBill()
-        {
-            double totalBill=0;
-
-            for(int i =0; i <ItemList.Length; i++)
+            public void printAll()
             {
-                totalBill += ItemList[i].GetPrice(); 
+                Console.WriteLine();
             }
-            return totalBill;
         }
-        public double GetTotalWeight()
-        {
-            double totalWeight = 0;
-            for(int i=0; i < ItemList.Length; i++)
+            //Until here Error! T-T
+            public double GetFinalBill()
             {
-                totalWeight += ItemList[i].GetWeight();
+                double totalBill = 0;
+
+                for (int i = 0; i < ItemList.Length; i++)
+                {
+                    totalBill += ItemList[i].GetPrice();
+                }
+                return totalBill;
             }
-            return totalWeight;
-        }
+            public double GetTotalWeight()
+            {
+                double totalWeight = 0;
+                for (int i = 0; i < ItemList.Length; i++)
+                {
+                    totalWeight += ItemList[i].GetWeight();
+                }
+                return totalWeight;
+            }
     }
 }

@@ -12,10 +12,6 @@ namespace NewGitRepo
         public double weight;
         public double price;
 
-        public Item()
-        {
-        }
-
         public Item(string name, double price, double weight)
         {
             this.name = name;
