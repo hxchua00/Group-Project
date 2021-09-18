@@ -6,20 +6,6 @@ using System.Threading.Tasks;
 
 namespace NewGitRepo
 {
-    public static class Extensions
-    {
-        public static T[] Append<T>(this T[] array, T item)
-        {
-            if (array == null)
-            {
-                return new T[] { item };
-            }
-            Array.Resize(ref array, array.Length + 1);
-            array[array.Length - 1] = item;
-
-            return array;
-        }
-    }
     class Program
     {
         static void Main(string[] args)
@@ -31,7 +17,7 @@ namespace NewGitRepo
             Console.WriteLine("2) Nothing");
             Console.WriteLine("----------------------------------------------------");
             Console.Write("Option: ");
-            string decision = Console.ReadLine().ToString();
+            int decision = int.Parse(Console.ReadLine());
             Console.WriteLine();
 
             bool shopping = true;
@@ -39,16 +25,17 @@ namespace NewGitRepo
             {
                 switch (decision)
                 {
-                    case "1":
+                    case 1:
                         Console.WriteLine("Welcome! What would you like to do?");
                         Console.WriteLine("1) Buy stuff");
                         Console.WriteLine("2) Find price of item");
                         Console.WriteLine("3) Find weight of item");
                         Console.WriteLine("4) Get total bill of shopping cart");
                         Console.WriteLine("5) Get total weight of shopping cart");
-                        Console.WriteLine("6) Exit");
+                        Console.WriteLine("6) Print shopping list");
+                        Console.WriteLine("7) Exit");
                         Console.WriteLine("----------------------------------------------------");
-                        string newDecision = Console.ReadLine().ToString();
+                        int newDecision = int.Parse(Console.ReadLine());
                         Console.WriteLine();
 
                         string itemName = "";
@@ -56,12 +43,11 @@ namespace NewGitRepo
                         string itemWeight = "";
 
                         Item newItem = new Item();
-                        Item[] itemArray = new Item[] { };
-                        Bill toAdd = new Bill();
+                        Bill newBill = new Bill();
 
                         switch (newDecision)
                         {
-                            case "1":
+                            case 1:
                                 Console.WriteLine("Please enter name of item: ");
                                 itemName = Console.ReadLine();
                                 Console.WriteLine("Please enter price of " + itemName + " : ");
@@ -70,23 +56,16 @@ namespace NewGitRepo
                                 itemWeight = (Console.ReadLine()).ToString();
                                 Console.WriteLine();
                              
+                                //ERROR STARTS HERE T-T
                                 newItem = new Item(itemName, double.Parse(itemPrice), double.Parse(itemWeight));
-                                //itemArray.Append(newItem);
+                                newBill.addItems(newItem);
 
-                                for(int i=0; i < itemArray.Length; i++)
-                                {
-                                    if(itemArray[i] == null)
-                                    {
-                                        itemArray.Append(newItem);
-                                        Console.WriteLine("Item have been added!" + itemArray[i]);
-                                        Console.ReadLine();
-                                    }
-                                }
-                                toAdd.addItems(newItem);
-                                //testing
-                                toAdd.printAll();
+                                Console.WriteLine("Item " + itemName + " have been added!");
+
+                                //testing - Not printing anything :(
+                                newBill.printAll();
                                 break;
-                            case "2":
+                            case 2:
                                 Console.WriteLine("Finding item price...");
                                 Console.WriteLine("Enter name of item: ");
                                 string sName = (Console.ReadLine()).ToString();
@@ -99,16 +78,28 @@ namespace NewGitRepo
                                 }
                                 else if (sName == itemName)
                                 {
-
+                                    Console.WriteLine();
                                 }
                                 break;
-                            case "3":
+                            case 3:
                                 break;
-                            case "4":
+                            case 4:
                                 break;
-                            case "5":
+                            case 5:
+                                double totalWeight = 0;
+                                foreach(Item x in newBill.ItemList)
+                                {
+                                    totalWeight += x.GetWeight();
+                                }
+                                Console.WriteLine("Total Weight of your shopping is: " + totalWeight + " grams.");
+                                Console.ReadLine();
                                 break;
-                            case "6":
+                            case 6:
+                                newBill.printAll();
+                                Console.ReadLine();
+                     
+                                break;
+                            case 7:
                                 Console.WriteLine("Thank you for shopping with us!");
                                 Console.ReadLine();
                                 shopping = false;
@@ -120,7 +111,7 @@ namespace NewGitRepo
                         }
 
                         break;
-                    case "2":
+                    case 2:
                         Console.WriteLine("Goodbye!");
                         Console.ReadLine();
                         shopping = false;

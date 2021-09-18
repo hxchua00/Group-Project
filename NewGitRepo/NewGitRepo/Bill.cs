@@ -8,25 +8,20 @@ namespace NewGitRepo
 {
     class Bill : Item
     {
-        public Item[] ItemList = new Item[] { };
+        //ERROR STARTS HERE, somewhere....
+        public Item[] ItemList;
 
         public void addItems(Item newItem)
         {
-            newItem = new Item(name,price,weight); 
+            newItem = new Item(name,price,weight);
             ItemList.Append(newItem);
         }
 
         public void printAll()
         {
-            for(int i = 0; i < ItemList.Length; i++)
-            {
-                Console.WriteLine("Name of item "+ i + 1 + ": " + ItemList[i].GetName());
-                Console.WriteLine("Price of item " + i + 1 + ": " + ItemList[i].GetPrice());
-                Console.WriteLine("Weight of item " + i + 1 + ": " + ItemList[i].GetWeight());
-                Console.WriteLine();
-                Console.ReadLine();
-            }
+
         }
+        //Until here Error! T-T
         public double GetFinalBill()
         {
             double totalBill=0;
