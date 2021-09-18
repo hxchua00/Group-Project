@@ -11,6 +11,11 @@ namespace NewGitRepo
         public string name;
         public double weight;
         public double price;
+        //test
+        public Item()
+        {
+        }
+
 
         public Item(string name, double price, double weight)
         {
