@@ -10,6 +10,13 @@ namespace NewGitRepo
     {
         static void Main(string[] args)
         {
+            Item newItem = new Item();
+            Bill newBill = new Bill();
+            //Things to shop
+            Item watermelon = new Item("Watermelon", 2.00, 10.2);
+            Item chocolate = new Item("Chocolate", 15.00, 0.1);
+            Item salmon = new Item("Salmon", 20.00, 5.6);
+
             //Add a number of items
             Console.WriteLine("Hello! Welcome to shopping with us!");
             Console.WriteLine("What would you like to do?");
@@ -41,9 +48,7 @@ namespace NewGitRepo
                         string itemName = "";
                         double itemPrice = 0;
                         double itemWeight = 0;
-
-                        Item newItem = new Item(itemName,itemPrice,itemWeight);
-                        Bill newBill = new Bill();
+                        
 
                         switch (newDecision)
                         {
@@ -58,7 +63,7 @@ namespace NewGitRepo
                              
                                 //ERROR STARTS HERE T-T
                                 newItem = new Item(itemName, itemPrice, itemWeight);
-                                newBill.addItems(newItem);
+                                //newBill.AddItems(newItem);
 
                                 Console.WriteLine("Item " + itemName + " have been added!");
 
@@ -86,13 +91,13 @@ namespace NewGitRepo
                             case 4:
                                 break;
                             case 5:
-                                double totalWeight = 0;
-                                foreach(Item x in newBill.ItemList)
-                                {
-                                    totalWeight += x.GetWeight();
-                                }
-                                Console.WriteLine("Total Weight of your shopping is: " + totalWeight + " grams.");
-                                Console.ReadLine();
+                                //double totalWeight = 0;
+                                //foreach(Item x in newBill.ItemList)
+                                //{
+                                //    totalWeight += x.GetWeight();
+                                //}
+                                //Console.WriteLine("Total Weight of your shopping is: " + totalWeight + " grams.");
+                                //Console.ReadLine();
                                 break;
                             case 6:
                                 newBill.printAll();

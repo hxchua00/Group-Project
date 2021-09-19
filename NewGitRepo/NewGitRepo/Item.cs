@@ -6,16 +6,13 @@ using System.Threading.Tasks;
 
 namespace NewGitRepo
 {
-    class Item
+    public class Item
     {
-        public string name;
-        public double weight;
-        public double price;
-        //test
-        public Item()
-        {
-        }
+        public string name { get; set; }
+        public double price { get; set; } //Price is per KG
+        public double weight { get; set; } //Weight is in KG
 
+        public Item() { }
 
         public Item(string name, double price, double weight)
         {
@@ -23,20 +20,5 @@ namespace NewGitRepo
             this.price = price;
             this.weight = weight;
         }
-
-        public string GetName()
-        {
-            return name;
-        }
-        public double GetPrice()
-        {
-            return price;
-        }
-
-        public double GetWeight()
-        {
-            return weight;
-        }
-
     }
 }
