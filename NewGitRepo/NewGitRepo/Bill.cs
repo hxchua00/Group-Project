@@ -50,5 +50,25 @@ namespace NewGitRepo
 
             }
         }
+
+        public double getFinalBill()
+        {
+            double FinalBill = 0;
+            for(int i = 0; i < ItemList.Length; i++)
+            {
+                FinalBill = FinalBill + (ItemList[i].price * ItemList[i].weight);
+            }
+            return FinalBill;
+        }
+        
+        public double getFinalWeight()
+        {
+            double FinalWeight = 0;
+            for(int i = 0; i < ItemList.Length; i++)
+            {
+                FinalWeight = FinalWeight + ItemList[i].weight;
+            }
+            return FinalWeight;
+        }
     }
 }

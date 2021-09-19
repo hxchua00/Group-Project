@@ -75,22 +75,30 @@ namespace NewGitRepo
                                 Console.WriteLine("Enter name of item: ");
                                 string sName = (Console.ReadLine()).ToString();
 
-                                if (sName == "")
-                                {
-                                    Console.WriteLine("Do not leave this field Empty!");
-                                    Console.ReadLine();
-                                    break;
-                                }
-                                else if (sName == itemName)
-                                {
-                                    Console.WriteLine();
-                                }
+                                Console.WriteLine(newItem.getPrice(sName));
+                                //if (sName == "")
+                                //{
+                                //    Console.WriteLine("Do not leave this field Empty!");
+                                //    Console.ReadLine();
+                                //    break;
+                                //}
+                                //else if (sName == itemName)
+                                //{
+                                //    Console.WriteLine();
+                                //}
                                 break;
                             case 3:
+                                Console.WriteLine("Finding item weight...");
+                                Console.WriteLine("Enter name of item: ");
+                                string wName = (Console.ReadLine()).ToString();
+
+                                Console.WriteLine(newItem.getWeight(wName));
                                 break;
                             case 4:
+                                newBill.getFinalBill();
                                 break;
                             case 5:
+                                newBill.getFinalWeight();
                                 //double totalWeight = 0;
                                 //foreach(Item x in newBill.ItemList)
                                 //{

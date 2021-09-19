@@ -20,5 +20,31 @@ namespace NewGitRepo
             this.price = price;
             this.weight = weight;
         }
+
+        Bill bill = new Bill();
+        public double getPrice(string name)
+        {
+            double Priceitem = 0;
+            for (int i = 0; i < bill.ItemList.Length; i++)
+            {
+                if (Equals(bill.ItemList[i], name))
+                {
+                    Priceitem = bill.ItemList[i].price * bill.ItemList[i].weight;
+                }
+            }
+            return Priceitem;
+        }
+
+        public double getWeight(string name)
+        {
+            for (int i = 0; i < bill.ItemList.Length; i++)
+            {
+                if (Equals(bill.ItemList[i], name))
+                {
+                    price = bill.ItemList[i].weight;
+                }
+            }
+            return weight;
+        }
     }
 }
