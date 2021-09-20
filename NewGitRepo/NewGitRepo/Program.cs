@@ -34,6 +34,8 @@ namespace NewGitRepo
                 {
                     case 1:
                         Console.WriteLine("Welcome! What would you like to do?");
+                        Console.WriteLine("========================================");
+                        Console.WriteLine();
                         Console.WriteLine("1) Buy stuff");
                         Console.WriteLine("2) Find price of item");
                         Console.WriteLine("3) Find weight of item");
@@ -42,34 +44,55 @@ namespace NewGitRepo
                         Console.WriteLine("6) Print shopping list");
                         Console.WriteLine("7) Exit");
                         Console.WriteLine("----------------------------------------------------");
-                        int newDecision = int.Parse(Console.ReadLine());
                         Console.WriteLine();
-
-                        string itemName = "";
-                        double itemPrice = 0;
-                        double itemWeight = 0;
-                        
+                        int newDecision = int.Parse(Console.ReadLine());
 
                         switch (newDecision)
                         {
+                            //Buy items
                             case 1:
-                                Console.WriteLine("Please enter name of item: ");
-                                itemName = Console.ReadLine();
-                                Console.WriteLine("Please enter price of " + itemName + " : ");
-                                itemPrice = double.Parse(Console.ReadLine());
-                                Console.WriteLine("Please enter weight of " + itemName + " : ");
-                                itemWeight = double.Parse(Console.ReadLine());
-                                Console.WriteLine();
-                             
-                                //ERROR STARTS HERE T-T
-                                newItem = new Item(itemName, itemPrice, itemWeight);
-                                //newBill.AddItems(newItem);
+                                bool buyMenu = true;
 
-                                Console.WriteLine("Item " + itemName + " have been added!");
+                                while (buyMenu)
+                                {
+                                    Console.WriteLine("1) Watermelon");
+                                    Console.WriteLine("2) Chocolate");
+                                    Console.WriteLine("3) Salmon");
+                                    Console.WriteLine("4) Nothing");
+                                    Console.WriteLine();
 
-                                //testing - Not printing anything :(
-                                newBill.printAll();
+                                    int selection = int.Parse(Console.ReadLine());
+
+                                    Console.WriteLine("Please choose which item you wish to buy: ");
+                                    Console.WriteLine("==========================================");
+
+                                    switch (selection)
+                                    {
+                                        case 1:
+                                            newBill.AddItem(watermelon);
+                                            Console.WriteLine("Great Choice! Watermelon is added to your shopping cart!");
+                                            break;
+                                        case 2:
+                                            newBill.AddItem(chocolate);
+                                            Console.WriteLine("Mmm delicious! Chocolate is added to your shopping cart!");
+                                            break;
+                                        case 3:
+                                            newBill.AddItem(salmon);
+                                            Console.WriteLine("Taste of the ocean! Salmon is added to your shopping cart!");
+                                            break;
+                                        case 4:
+                                            Console.WriteLine("Please come again!");
+                                            buyMenu = false;
+                                            break;
+                                        default:
+                                            Console.WriteLine("Please choose from available option!");
+                                            break;
+                                    }
+                                }
+
                                 break;
+
+                            //Find price of item
                             case 2:
                                 Console.WriteLine("Finding item price...");
                                 Console.WriteLine("Enter name of item: ");
@@ -87,6 +110,8 @@ namespace NewGitRepo
                                 //    Console.WriteLine();
                                 //}
                                 break;
+
+                            //Find weight of item
                             case 3:
                                 Console.WriteLine("Finding item weight...");
                                 Console.WriteLine("Enter name of item: ");
@@ -94,9 +119,13 @@ namespace NewGitRepo
 
                                 Console.WriteLine(newItem.getWeight(wName));
                                 break;
+
+                            //Get total price of shopping cart
                             case 4:
                                 newBill.getFinalBill();
                                 break;
+
+                            //Get total weight of shopping cart
                             case 5:
                                 newBill.getFinalWeight();
                                 //double totalWeight = 0;
@@ -107,25 +136,31 @@ namespace NewGitRepo
                                 //Console.WriteLine("Total Weight of your shopping is: " + totalWeight + " grams.");
                                 //Console.ReadLine();
                                 break;
+
+                            //Print everything within the shopping cart
                             case 6:
                                 newBill.printAll();
                                 Console.ReadLine();
                      
                                 break;
+
+                            //Exit
                             case 7:
                                 Console.WriteLine("Thank you for shopping with us!");
                                 Console.ReadLine();
                                 shopping = false;
                                 break;
                             default:
-                                Console.WriteLine();
+                                Console.WriteLine("Please sselect from available options only!");
                                 break;
 
                         }
 
                         break;
+
+                    //Exit
                     case 2:
-                        Console.WriteLine("Goodbye!");
+                        Console.WriteLine("Thank you for using out system! Goodbye!");
                         Console.ReadLine();
                         shopping = false;
                         break;
